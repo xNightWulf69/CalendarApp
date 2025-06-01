@@ -9,7 +9,17 @@ const task = {
   assigned: this.selectedAssignment,
   repeat: this.selectedRepeat,
   created: now.toISOString()
-};if(this.selectedAssignment==='alternating'){task.altStart=document.getElementById('as').value}if(['every-other-day','quarterly'].includes(this.selectedRepeat)){task.startDay=document.getElementById('std').value}if(this.selectedRepeat==='weekly'){task.weekDay=document.getElementById('wd').value}if(['monthly','quarterly'].includes(this.selectedRepeat)){task.monthDay=document.getElementById('md').value}if(this.selectedRepeat==='twice-weekly'){task.twiceDays=Array.from(this.selectedDays)}if(this.selectedRepeat==='custom'){task.customDays=Array.from(this.selectedDays)}this.tasks.push(task);this.syncNow();this.resetForm();this.switchTab('calendar')}deleteTask(id){this.tasks=this.tasks.filter(t=>t.id!==id);this.syncNow();this.renderCalendar();document.getElementById('tm').style.display='none'}resetForm(){document.getElementById('tf').reset();document.querySelectorAll('.selected').forEach(el=>{if(!el.dataset.value||!['alex','bethany'].includes(el.dataset.value))el.classList.remove('selected')});document.querySelectorAll('.hidden').forEach(el=>el.classList.add('hidden'));this.selectedDays.clear();this.selectedAssignment='';this.selectedRepeat=''}requestNotifications(){if('Notification'in window){Notification.requestPermission().then(p=>{if(p==='granted'){this.showNotification(title, body = '📋 Task Reminder') {
+requestNotifications() {
+  if ('Notification' in window) {
+    Notification.requestPermission().then(p => {
+      if (p === 'granted') {
+        this.showNotification('✅ Notifications enabled!', '🔔 You will now get task reminders.');
+      }
+    });
+  }
+}
+
+showNotification(title, body = '📋 Task Reminder') {
   if ('Notification' in window && Notification.permission === 'granted') {
     try {
       new Notification(title, {
@@ -52,7 +62,7 @@ setupNotifications() {
       }
     });
   }, 30000);
-}
-}} // End of class TaskScheduler
+} // End of class TaskScheduler
+
 const ts = new TaskScheduler();
 </script></body></html>
