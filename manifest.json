@@ -3,6 +3,7 @@
   "short_name": "Tasks",
   "description": "Sync household tasks",
   "start_url": "/CalendarApp/",
+  "scope": "/CalendarApp/",
   "display": "standalone",
   "background_color": "#667eea",
   "theme_color": "#667eea",
