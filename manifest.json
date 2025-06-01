@@ -2,7 +2,7 @@
   "name": "Task Scheduler",
   "short_name": "Tasks",
   "description": "Sync household tasks",
-  "start_url": "/",
+  "start_url": "/CalendarApp/",
   "display": "standalone",
   "background_color": "#667eea",
   "theme_color": "#667eea",
